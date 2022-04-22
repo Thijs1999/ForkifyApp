@@ -104,5 +104,8 @@ const init = () => {
   if (storage) state.bookmarks = JSON.parse(storage);
 };
 
-//init();
-//console.log(state.bookmarks);
+init();
+
+const clearBookmarks = () => {
+  localStorage.clear('bookmarks');
+};
