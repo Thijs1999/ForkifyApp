@@ -10,7 +10,6 @@ export const state = {
     results: [],
     resultsPerPage: RESULTS_PER_PAGE,
     page: 1,
-    numberOfPages: 1,
   },
   bookmarks: [],
 };
@@ -57,10 +56,6 @@ export const loadSearchResults = async query => {
         ...(recipe.key && { key: recipe.key }),
       };
     });
-
-    state.search.numberOfPages = Math.ceil(
-      state.search.results.length / RESULTS_PER_PAGE
-    );
 
     state.search.page = 1;
   } catch (err) {

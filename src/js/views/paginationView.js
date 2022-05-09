@@ -33,6 +33,7 @@ class PaginationView extends View {
               <use href="${icons}#icon-arrow-right"></use>
           </svg>
       </button>
+      <span class="pagination__page-counter">${numPages} pages</span>
     `;
     }
 
@@ -47,6 +48,7 @@ class PaginationView extends View {
             </svg>
             <span>Page ${currPage - 1}</span>
         </button>
+        <span class="pagination__page-counter">${numPages} pages</span>
       `;
     }
 
@@ -69,6 +71,7 @@ class PaginationView extends View {
             <use href="${icons}#icon-arrow-right"></use>
           </svg>
         </button>
+        <span class="pagination__page-counter">${numPages} pages</span>
       `;
     }
 
