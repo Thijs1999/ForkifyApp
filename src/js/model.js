@@ -14,7 +14,7 @@ export const state = {
   bookmarks: [],
 };
 
-const createRecipeObject = data => {
+const createRecipeObject = (data) => {
   const { recipe } = data.data;
   return {
     id: recipe.id,
@@ -29,12 +29,12 @@ const createRecipeObject = data => {
   };
 };
 
-export const loadRecipe = async id => {
+export const loadRecipe = async (id) => {
   try {
     const data = await AJAX(`${API_URL}${id}`);
     state.recipe = createRecipeObject(data);
 
-    if (state.bookmarks.some(bookmark => bookmark.id === id))
+    if (state.bookmarks.some((bookmark) => bookmark.id === id))
       state.recipe.bookmarked = true;
     else state.recipe.bookmarked = false;
   } catch (err) {
@@ -42,12 +42,13 @@ export const loadRecipe = async id => {
   }
 };
 
-export const loadSearchResults = async query => {
+export const loadSearchResults = async (query) => {
   try {
     state.search.query = query;
     const data = await AJAX(`${API_URL}?search=${query}&key=${KEY}`);
 
-    state.search.results = data.data.recipes.map(recipe => {
+    console.log(data);
+    state.search.results = data.data.recipes.map((recipe) => {
       return {
         id: recipe.id,
         title: recipe.title,
@@ -72,8 +73,8 @@ export const getSearchResultsPage = (page = state.search.page) => {
   return state.search.results.slice(start, end);
 };
 
-export const updateServings = newServings => {
-  state.recipe.ingredients.forEach(ing => {
+export const updateServings = (newServings) => {
+  state.recipe.ingredients.forEach((ing) => {
     ing.quantity = (ing.quantity * newServings) / state.recipe.servings;
     // newQuantity = oldQuantity * newServings / oldServerings Example: 2 * 8 / 4 = 4
 
@@ -85,7 +86,7 @@ const persistBookmarks = () => {
   localStorage.setItem('bookmarks', JSON.stringify(state.bookmarks));
 };
 
-export const addBookmark = recipe => {
+export const addBookmark = (recipe) => {
   // Add bookmark
   state.bookmarks.push(recipe);
 
@@ -95,8 +96,8 @@ export const addBookmark = recipe => {
   persistBookmarks();
 };
 
-export const deleteBookMark = id => {
-  const index = state.bookmarks.findIndex(el => el.id === id);
+export const deleteBookMark = (id) => {
+  const index = state.bookmarks.findIndex((el) => el.id === id);
   state.bookmarks.splice(index, 1);
 
   if (id === state.recipe.id) state.recipe.bookmarked = false;
@@ -114,12 +115,12 @@ const clearBookmarks = () => {
   localStorage.clear('bookmarks');
 };
 
-export const uploadRecipe = async newRecipe => {
+export const uploadRecipe = async (newRecipe) => {
   try {
     const ingredients = Object.entries(newRecipe)
-      .filter(entry => entry[0].startsWith('ingredient') && entry[1] !== '')
-      .map(ing => {
-        const ingArr = ing[1].split(',').map(el => el.trim());
+      .filter((entry) => entry[0].startsWith('ingredient') && entry[1] !== '')
+      .map((ing) => {
+        const ingArr = ing[1].split(',').map((el) => el.trim());
         if (ingArr.length !== 3)
           throw new Error(
             'Wrong ingredient format! Please use the correct format :)'

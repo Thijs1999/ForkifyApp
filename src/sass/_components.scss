@@ -16,10 +16,6 @@
   &:focus {
     outline: none;
   }
-
-  & > *:first-child {
-    margin-right: 1rem;
-  }
 }
 
 .btn {
@@ -152,6 +148,23 @@
   }
 }
 
+.btn--shopping-list {
+  background-image: $gradient-2;
+  border-radius: 50%;
+  padding: 2rem;
+  text-align: center;
+  position: fixed;
+  top: 5rem;
+  right: 5rem;
+  color: white;
+
+  box-shadow: 0 1.5rem 4rem rgba(#000, 0.15);
+
+  &:hover {
+   box-shadow: 0 1.5rem 2rem rgba(#000, 0.15);
+  }
+}
+
 .heading--2 {
   font-size: 2rem;
   font-weight: 700;
@@ -210,4 +223,8 @@
     line-height: 1.5;
     font-weight: 600;
   }
+}
+
+.shopping-list {
+
 }
