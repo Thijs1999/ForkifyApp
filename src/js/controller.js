@@ -16,7 +16,6 @@ import 'regenerator-runtime/runtime';
 
 const controlRecipes = async function () {
   try {
-    console.log('test');
     const id = window.location.hash.slice(1);
 
     if (!id) return;
@@ -119,11 +118,17 @@ const controlAddRecipe = async newRecipe => {
   }
 };
 
+const controlAddShoppingList = () => {
+  // 1 Get all the ingredients from the current recipe
+  console.log(model.state.recipe);
+};
+
 const init = function () {
   bookmarksView.addHandlerRenderer(controlBookmarks);
   recipeView.addHandlerRenderer(controlRecipes);
   recipeView.addHandlerUpdateServings(controlServings);
   recipeView.addHandlerAddBookmark(controlAddbookmark);
+  recipeView.addHandlerShoppingList(controlAddShoppingList);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);

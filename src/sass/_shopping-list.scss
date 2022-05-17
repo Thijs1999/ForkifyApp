@@ -1,0 +1,37 @@
+.shopping {
+  padding: 3rem;
+}
+
+.shopping-list {
+  list-style: none;
+  padding: 2rem;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.5px solid rgba($color-grey-dark-2, 0.2);
+    padding-bottom: 1.5rem;
+  }
+
+  &__quantity {
+    width: 25%;
+  }
+
+  &__ingredient {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  &__icon-minus {
+    cursor: pointer;
+    height: 2rem;
+    width: 2rem;
+    fill: $color-primary;
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+      transform: translateY(-0.3rem);
+    }
+  }
+}

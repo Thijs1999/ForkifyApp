@@ -87,6 +87,7 @@
 }
 
 .btn--round {
+  margin: 0 1rem;
   background-image: $gradient;
   border-radius: 50%;
   border: none;
@@ -161,7 +162,7 @@
   box-shadow: 0 1.5rem 4rem rgba(#000, 0.15);
 
   &:hover {
-   box-shadow: 0 1.5rem 2rem rgba(#000, 0.15);
+    box-shadow: 0 1.5rem 2rem rgba(#000, 0.15);
   }
 }
 
@@ -172,7 +173,7 @@
   text-transform: uppercase;
   margin-bottom: 2.5rem;
   text-align: center;
-  // transform: skewY(-3deg);
+  transform: skewY(-3deg);
 }
 
 .link:link,
@@ -223,8 +224,4 @@
     line-height: 1.5;
     font-weight: 600;
   }
-}
-
-.shopping-list {
-
 }
